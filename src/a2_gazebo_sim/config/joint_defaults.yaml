@@ -1,0 +1,19 @@
+joint_state_publisher:
+  ros__parameters:
+    # Zero (default) positions for the 12 leg joints, chosen so the A2 stands
+    # with its feet directly under the hips.  joint_state_publisher would
+    # otherwise pick the middle of each joint limit (calf = -1.655), which folds
+    # the legs into a non-standing pose.
+    #
+    # Kinematics: thigh length 0.275 + calf length 0.275, foot sphere r=0.032.
+    # thigh = +0.9 rad, calf = -1.8 rad  ->  foot offset z = 2*0.275*cos(0.9)
+    # = 0.342 m, so base_link sits 0.374 m above the ground.
+    zeros:
+      FL_thigh_joint: 0.9
+      RL_thigh_joint: 0.9
+      FR_thigh_joint: 0.9
+      RR_thigh_joint: 0.9
+      FL_calf_joint: -1.8
+      RL_calf_joint: -1.8
+      FR_calf_joint: -1.8
+      RR_calf_joint: -1.8

@@ -46,6 +46,7 @@ class InitialPoseFromOdom(Node):
             self.get_logger().info(
                 'initial pose published %d times, exiting' % self.sent)
             self.destroy_timer(self.timer)
+            rclpy.shutdown()
             return
 
         pose = self.odom.pose.pose
